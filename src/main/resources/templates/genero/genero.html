@@ -29,13 +29,18 @@
           <th>Id</th>
           <th>Nombre</th>
           <th>Estado</th>
+          <th>Acciones</th>
         </thead>
         <tbody>
           <tr th:if="${genero.size>0}" th:each="g:${genero}">
-          <td th:text="${g.getIdGenero}"></td>
-          <td th:text="${g.getNombreGenero}"></td>
-          <td th:if="${g.getEstadoGenero==true}" class="green-text">Activo</td>
-          <td th:if="${g.getEstadoGenero==false}" class="red-text">Inactivo</td>
+            <td th:text="${g.getIdGenero}"></td>
+            <td th:text="${g.getNombreGenero}"></td>
+            <td th:if="${g.getEstadoGenero==true}" class="green-text">Activo</td>
+            <td th:if="${g.getEstadoGenero==false}" class="red-text">Inactivo</td>
+            <td th:if="${g.getEstadoGenero==true}" class="red btn"><a class="white-text" th:href="@{/genero/ver/}+${g.getIdGenero}">Desactivar</a></td>
+            <td th:if="${g.getEstadoGenero==false}" class="green btn"><a class="white-text" th:href="@{/genero/ver/}+${g.getIdGenero}">Activar</a></td>
+            <td><a class="btn yellow" href="javascript:mostrar(${Genero.getIdGenero()})"><i class="material-icons">build</i></a></td>
+            <td><a  class="btn red" onclick="alertaBorrar(event,'${Genero.getIdGenero()}','genero')"><i class="material-icons">delete_forever</i></a></td>
           </tr>
           </tbody>
       </table>
