@@ -1,25 +1,46 @@
-package disquera.disquerahm.models;
+package disquera.disquerahm.models.Disquera;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.persistence.GeneratedValue;
+
+@Entity
+@Table(name="disqueras")
 public class Disquera {
-    private int idDisquera;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idDisquera;
+    @NotEmpty
+    @Column(length = 50,nullable = false)
     private String nombreDisquera;
-    private boolean estadoDisquera;
+    @NotEmpty
+    @Column (length = 50, nullable = false)
     private String telefonoDisquera;
+    @NotEmpty
+    @Column (length = 50, nullable = false)
     private String direccionDisquera;
+    @NotEmpty
+    @Column (length = 50, nullable = false)
     private String nitDisquera;
+
+    private boolean estadoDisquera;
 
     public Disquera(){
         
     }
-    public Disquera(int idDisquera,String nombreDisquera,boolean estadoDisquera){
+    public Disquera(Integer idDisquera,String nombreDisquera,boolean estadoDisquera){
         this.idDisquera=idDisquera;
         this.nombreDisquera=nombreDisquera;
         this.estadoDisquera=estadoDisquera;
     }
-    public int getIdDisquera() {
+    public Integer getIdDisquera() {
         return idDisquera;
     }
-    public void setIdDisquera(int idDisquera) {
+    public void setIdDisquera(Integer idDisquera) {
         this.idDisquera = idDisquera;
     }
     public String getNombreDisquera() {

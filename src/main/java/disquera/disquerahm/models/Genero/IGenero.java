@@ -1,4 +1,4 @@
-package disquera.disquerahm.models;
+package disquera.disquerahm.models.Genero;
 
 import java.util.List;
 

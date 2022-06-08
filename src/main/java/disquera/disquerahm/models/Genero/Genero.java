@@ -1,4 +1,4 @@
-package disquera.disquerahm.models;
+package disquera.disquerahm.models.Genero;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;

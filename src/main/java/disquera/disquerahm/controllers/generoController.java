@@ -1,11 +1,5 @@
 package disquera.disquerahm.controllers;
 
-import disquera.disquerahm.models.Genero;
-import disquera.disquerahm.models.IGenero;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import disquera.disquerahm.models.Genero.Genero;
+import disquera.disquerahm.models.Genero.IGenero;
 
 
 @Controller
@@ -33,18 +29,18 @@ public class generoController {
         mv.setViewName("genero/genero");
         return mv;
     }
-    @RequestMapping(value = {"/ver/{id}","/ver"}, method = RequestMethod.GET)
-    public ModelAndView ver(@PathVariable Integer id,String msn, ModelAndView mv){
+    @RequestMapping(value = {"/editar/{id}","/editar"})
+    public ModelAndView editar(@PathVariable Integer id, ModelAndView mv){
         Genero genero=null;
         if (id>0){
             genero=Igenero.findOne(id);
+            mv.addObject("genero", genero);
+            mv.setViewName("genero/form");
+            return mv;
         }else{
             mv.setViewName("redirect:listar");
             return mv;
         }
-        mv.addObject("id","La id es: "+id);
-        mv.setViewName("genero/ver");
-        return mv;
     }
     @RequestMapping(value= {"/form"},method = RequestMethod.GET)
     public ModelAndView form(ModelAndView mv){

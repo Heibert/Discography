@@ -1,4 +1,4 @@
-package disquera.disquerahm.models;
+package disquera.disquerahm.models.Disquera;
 
 import java.util.List;
 
@@ -10,27 +10,27 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class GeneroDao implements IGenero {
+public class DisqueraDao implements IDisquera {
     @PersistenceContext
     private EntityManager em;
     @Transactional(readOnly = true)
     @Override
-    public List<Genero> findAll(){
-        return em.createQuery("from Genero").getResultList();
+    public List<Disquera> findAll(){
+        return em.createQuery("from Disquera").getResultList();
     }
     @Transactional
     @Override
-    public void save(Genero genero) {
-        if(genero.getIdGenero() != null && genero.getIdGenero() > 0){
-            em.merge(genero);
+    public void save(Disquera disquera) {
+        if(disquera.getIdDisquera() != null && disquera.getIdDisquera() > 0){
+            em.merge(disquera);
         }else{
-            em.persist(genero);
+            em.persist(disquera);
         }
     }
     @Override
     @Transactional(readOnly = true)
-    public Genero findOne(Integer id) {
-    return em.find(Genero.class, id);
+    public Disquera findOne(Integer id) {
+    return em.find(Disquera.class, id);
     }
     @Override
     @Transactional

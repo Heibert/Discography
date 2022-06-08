@@ -20,13 +20,20 @@
             </ul>
         </div>
     </nav>
-    <h2 class="teal-text text-lighten-2">Registrar Genero</h2>
-    <form method="post" th:action="@{add}" th:object="${genero}" th:field="nombreGenero">
+    <h2 class="teal-text text-lighten-2">Registrar Genero</h2> <!-- En espera de form de editar -->
+    <form method="post" th:action="@{/genero/add}" th:object="${genero}">
         <div class="row">
+            <label>Nombre del genero</label>
             <div class="input-field inline col s12">
-                <input type="text" name="nombreGenero" placeholder="Nombre del genero:">
+                <input type="text" placeholder="Nombre del genero:" th:field="*{nombreGenero}">
             </div>
             <div class="red-text" th:if="${#fields.hasErrors('nombreGenero')}" th:errors="*{nombreGenero}"></div>
+        </div>
+        <div class="row">
+            <label>Estado</label>
+            <div class="input-field inline col s12">
+                <input type="checkbox" th:field="*{EstadoGenero}" checked>
+            </div>
         </div>
         <div class="row">
             <input type="submit" name="accion" value="registrar" class="waves-effect waves-light btn-large">
