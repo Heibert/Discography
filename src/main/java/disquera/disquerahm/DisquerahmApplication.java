@@ -11,3 +11,16 @@ public class DisquerahmApplication {
 	}
 
 }
+//Tenia un problema a la hora de montar la BD tuve que borrar un archivo llamado "ServletInitializer"
+//Este era su contenido
+
+/*package disquera.disquerahm;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+public class ServletInitializer extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(DisquerahmApplication.class);
+	}
+}
+ */

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" th:href="@{/css/materialize.css}">
+    <title>Registrar Genero</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Genero</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a th:href="@{/index}">Inicio</a></li>
+            <li><a th:href="@{/genero/form}">Crear genero</a></li>
+            <li><a th:href="@{/genero}">Generos</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="teal-text text-lighten-2">Registrar Genero</h2>
+    <form method="post" th:action="@{add}" th:object="${genero}" th:field="nombreGenero">
+        <div class="row">
+            <div class="input-field inline col s12">
+                <input type="text" name="nombreGenero" placeholder="Nombre del genero:">
+            </div>
+            <div class="red-text" th:if="${#fields.hasErrors('nombreGenero')}" th:errors="*{nombreGenero}"></div>
+        </div>
+        <div class="row">
+            <input type="submit" name="accion" value="registrar" class="waves-effect waves-light btn-large">
+        </div>
+    </form>
+</body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="@{/js/Alertas.js}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/materialize.css}">
     <title>Index</title>
@@ -12,14 +13,14 @@
     <nav>
         <div class="nav-wrapper">
           <a href="#" class="brand-logo">Generos</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a th:href="@{index}">Inicio</a></li>
-            <li><a th:href="@{addGenero}">Crear genero</a></li>
-            <li><a th:href="@{genero}">Generos</a></li>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a th:href="@{/index}">Inicio</a></li>
+            <li><a th:href="@{/genero/form}">Crear genero</a></li>
+          <li><a th:href="@{/genero}">Generos</a></li>
           </ul>
         </div>
       </nav>
-        <div class="card red lighten-4 red-text text-darken-4" th:if="${genero.size()==0}">
+        <div class="card red lighten-4 red-text text-darken-4" th:if="${genero == null}">
           <div class="card-content">
             <p><i class="material-icons">report</i><b>Error: </b>No se han encontrado generos</p>
           </div>
@@ -32,7 +33,7 @@
           <th>Acciones</th>
         </thead>
         <tbody>
-          <tr th:if="${genero.size>0}" th:each="g:${genero}">
+          <tr th:if="${genero != null}" th:each="g:${genero}">
             <td th:text="${g.getIdGenero}"></td>
             <td th:text="${g.getNombreGenero}"></td>
             <td th:if="${g.getEstadoGenero==true}" class="green-text">Activo</td>
@@ -40,7 +41,7 @@
             <td th:if="${g.getEstadoGenero==true}" class="red btn"><a class="white-text" th:href="@{/genero/ver/}+${g.getIdGenero}">Desactivar</a></td>
             <td th:if="${g.getEstadoGenero==false}" class="green btn"><a class="white-text" th:href="@{/genero/ver/}+${g.getIdGenero}">Activar</a></td>
             <td><a class="btn yellow" href="javascript:mostrar(${Genero.getIdGenero()})"><i class="material-icons">build</i></a></td>
-            <td><a  class="btn red" onclick="alertaBorrar(event,'${Genero.getIdGenero()}','genero')"><i class="material-icons">delete_forever</i></a></td>
+            <td><a class="btn red" th:href="@{/genero/delete/}+${g.IdGenero}" onclick="/* alertaBorrar(event,'${g.id}','genero') */"><i class="material-icons">delete_forever</i></a></td>
           </tr>
           </tbody>
       </table>
