@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AlbumDao implements IAlbum {
     @PersistenceContext
     private EntityManager em;
+    @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
     @Override
     public List<Album> findAll(){

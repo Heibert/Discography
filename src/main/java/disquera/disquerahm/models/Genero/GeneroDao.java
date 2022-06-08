@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+
 import org.springframework.stereotype.Repository;
 import javax.persistence.PersistenceContext;
 
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GeneroDao implements IGenero {
     @PersistenceContext
     private EntityManager em;
+    @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
     @Override
     public List<Genero> findAll(){
