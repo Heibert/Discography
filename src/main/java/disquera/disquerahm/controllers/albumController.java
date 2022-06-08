@@ -8,53 +8,54 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import disquera.disquerahm.models.Disquera.Disquera;
-import disquera.disquerahm.models.Disquera.IDisquera;
-
+import disquera.disquerahm.models.Album.IAlbum;
+import disquera.disquerahm.models.Album.Album;
 
 @Controller
-@RequestMapping("/disquera")
-public class disqueraController {
+@RequestMapping("/album")
+@SessionAttributes("album")
+public class albumController {
     @Autowired
-    private IDisquera Idisquera;
-
+    private IAlbum Ialbum;
     @RequestMapping(value = {"/listar","","/"}, method = RequestMethod.GET)
-    public ModelAndView index(ModelAndView mv){
-        mv.addObject("disquera", Idisquera.findAll());
-        mv.setViewName("disquera/disquera");
-        return mv;
-    } 
-    @RequestMapping(value= {"/form"},method = RequestMethod.GET)
-    public ModelAndView form(ModelAndView mv){
-        Disquera disquera=new Disquera();
-        mv.addObject("disquera", disquera);
-        mv.setViewName("disquera/formD");
+    public ModelAndView verG(ModelAndView mv){
+        mv.addObject("album", Ialbum.findAll());
+        mv.setViewName("album/album");
         return mv;
     }
+    
     @RequestMapping(value = {"/editar/{id}","/editar"})
     public ModelAndView editar(@PathVariable Integer id, ModelAndView mv){
-        Disquera disquera=null;
+        Album album=null;
         if (id>0){
-            disquera=Idisquera.findOne(id);
-            mv.addObject("disquera", disquera);
-            mv.setViewName("disquera/formD");
+            album=Ialbum.findOne(id);
+            mv.addObject("album", album);
+            mv.setViewName("album/form");
             return mv;
         }else{
             mv.setViewName("redirect:listar");
             return mv;
         }
     }
+    @RequestMapping(value= {"/form"},method = RequestMethod.GET)
+    public ModelAndView form(ModelAndView mv){
+        Album album=new Album();
+        mv.addObject("album", album);
+        mv.setViewName("album/form");
+        return mv;
+    }
     @RequestMapping(value = {"/add"},method = RequestMethod.POST)
-    public ModelAndView add(@Valid Disquera disquera,BindingResult res, ModelAndView mv, SessionStatus status){
+    public ModelAndView add(@Valid Album album,BindingResult res, ModelAndView mv, SessionStatus status){
         if(res.hasErrors()){
-            mv.setViewName("disquera/formD");
+            mv.setViewName("album/form");
             return mv;
         }else{
-            Idisquera.save(disquera);
-            mv.addObject("disquera",disquera);
+            Ialbum.save(album);
+            mv.addObject("album",album);
             mv.setViewName("redirect:listar");
             status.setComplete();
             return mv;
@@ -63,8 +64,8 @@ public class disqueraController {
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
     public String delete(@PathVariable Integer id) {
         if(id > 0){
-            Idisquera.delete(id);
+            Ialbum.delete(id);
         }
-        return "redirect:/disquera/listar";
+        return "redirect:/album/listar";
     }
 }

@@ -7,10 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class indexController {
-    @RequestMapping(value = {"/index","/",""}, method = RequestMethod.GET)
+    @RequestMapping(value = {"","/","index"}, method = RequestMethod.GET)
     public ModelAndView index(ModelAndView mv){
-        mv.addObject("msn", "Este mensaje viene del controlador");
-        mv.setViewName("index");
+        mv.setViewName("/index");
         return mv;
-        }
+    }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" th:href="@{/css/materialize.css}">
+    <title>Registrar Album</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Album</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a th:href="@{/index}">Inicio</a></li>
+            <li><a th:href="@{/album/form}">Crear album</a></li>
+            <li><a th:href="@{/album}">Albums</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="teal-text text-lighten-2">Registrar Album</h2> <!-- En espera de form de editar -->
+    <form method="post" th:action="@{/album/add}" th:object="${album}">
+        <div class="row">
+            <label>Nombre del album</label>
+                <input type="text" placeholder="Nombre del album:" th:field="*{nombreAlbum}">
+            <div class="red-text" th:if="${#fields.hasErrors('nombreAlbum')}" th:errors="*{nombreAlbum}"></div>
+        </div>
+        <div class="row">
+            <input class="blue-text col s12" type="datetime-local" th:field="*{anoAlbum}">
+            <div class="red-text" th:if="${#fields.hasErrors('anoAlbum')}" th:errors="*{anoAlbum}"></div>
+        </div>
+        <div class="row">
+            <label>Estado</label>
+            <div class="input-field inline col s12">
+                <input type="checkbox" th:field="*{EstadoAlbum}" checked>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" name="accion" value="registrar" class="waves-effect waves-light btn-large">
+        </div>
+    </form>
+</body>
+</html>
