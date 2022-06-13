@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import disquera.disquerahm.models.Genero.Genero;
 import disquera.disquerahm.models.Genero.IGenero;
+import disquera.disquerahm.service.IGeneroService;
 
 
 @Controller
@@ -21,7 +22,7 @@ import disquera.disquerahm.models.Genero.IGenero;
 @SessionAttributes("genero")
 public class generoController {
     @Autowired
-    private IGenero Igenero;
+    private IGeneroService Igenero;
 
     @RequestMapping(value = {"/listar","","/"}, method = RequestMethod.GET)
     public ModelAndView verG(ModelAndView mv){

@@ -1,6 +1,10 @@
 package disquera.disquerahm.service;
 
-import disquera.disquerahm.models.Genero.IGenero;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import disquera.disquerahm.models.Genero.Genero;
 
 @Service
 public interface IGeneroService {

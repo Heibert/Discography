@@ -1,7 +1,6 @@
 package disquera.disquerahm.models.Genero;
-import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 public interface IGenero extends CrudRepository<Genero,Integer> {
 

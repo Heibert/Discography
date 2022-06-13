@@ -1,4 +1,4 @@
-package disquera.disquerahm.models.Genero;
+/* package disquera.disquerahm.models.Genero;
 
 import java.util.List;
 
@@ -39,4 +39,4 @@ public class GeneroDao implements IGenero {
     public void delete(Integer id){
         em.remove(findOne(id));
     }
-}
+} */
