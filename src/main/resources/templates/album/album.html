@@ -30,6 +30,7 @@
           <th>Id</th>
           <th>Nombre</th>
           <th>Fecha</th>
+          <th>Genero</th>
           <th>Estado</th>
           <th>Acciones</th>
         </thead>
@@ -38,6 +39,7 @@
             <td th:text="${a.getIdAlbum}"></td>
             <td th:text="${a.getNombreAlbum}"></td>
             <td th:text="${a.getAnoAlbum}"></td>
+            <td th:text="{a.ge}"></td>
             <td th:if="${a.getEstadoAlbum==true}" class="green-text">Activo</td>
             <td th:if="${a.getEstadoAlbum==false}" class="red-text">Inactivo</td>
             <td th:if="${a.getEstadoAlbum==true}" class="red btn"><a class="white-text" >Desactivar</a></td>

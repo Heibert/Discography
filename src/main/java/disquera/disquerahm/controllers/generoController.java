@@ -13,9 +13,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import disquera.disquerahm.models.Genero.Genero;
-import disquera.disquerahm.models.Genero.IGenero;
 import disquera.disquerahm.service.IGeneroService;
-
 
 @Controller
 @RequestMapping("/genero")
