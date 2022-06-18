@@ -38,8 +38,6 @@
             <td th:text="${g.getNombreGenero}"></td>
             <td th:if="${g.getEstadoGenero==true}" class="green-text">Activo</td>
             <td th:if="${g.getEstadoGenero==false}" class="red-text">Inactivo</td>
-            <td th:if="${g.getEstadoGenero==true}" class="red btn"><a class="white-text" >Desactivar</a></td>
-            <td th:if="${g.getEstadoGenero==false}" class="green btn"><a class="white-text">Activar</a></td>
             <td><a class="btn yellow" th:href="@{/genero/editar/}+${g.getIdGenero}"><i class="material-icons">build</i></a></td>
             <td><a class="btn red" th:href="@{/genero/delete/}+${g.IdGenero}" onclick="/* alertaBorrar(event,'${g.id}','genero') */"> <i class="material-icons">delete_forever</i></a></td>
           </tr>

@@ -40,8 +40,6 @@
             <td th:text="${a.getAnoAlbum}"></td>
             <td th:if="${a.getEstadoAlbum==true}" class="green-text">Activo</td>
             <td th:if="${a.getEstadoAlbum==false}" class="red-text">Inactivo</td>
-            <td th:if="${a.getEstadoAlbum==true}" class="red btn"><a class="white-text" >Desactivar</a></td>
-            <td th:if="${a.getEstadoAlbum==false}" class="green btn"><a class="white-text">Activar</a></td>
             <td><a class="btn yellow" th:href="@{/album/editar/}+${a.getIdAlbum}"><i class="material-icons">build</i></a></td>
             <td><a class="btn red" th:href="@{/album/delete/}+${a.IdAlbum}" onclick="/* alertaBorrar(event,'${g.id}','album') */"> <i class="material-icons">delete_forever</i></a></td>
           </tr>
