@@ -1,4 +1,4 @@
-/* package disquera.disquerahm.models.Factura;
+package disquera.disquerahm.models.Factura;
 
 import java.sql.Date;
 
@@ -44,4 +44,3 @@ public class Factura {
         this.genero = genero;
     }
 }
- */

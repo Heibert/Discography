@@ -15,16 +15,16 @@ public class Disquera {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idDisquera;
     @NotEmpty
-    @Column(length = 50,nullable = false)
+    @Column(length = 50)
     private String nombreDisquera;
     @NotEmpty
-    @Column (length = 50, nullable = false)
+    @Column (length = 50)
     private String telefonoDisquera;
     @NotEmpty
-    @Column (length = 50, nullable = false)
+    @Column (length = 50)
     private String direccionDisquera;
     @NotEmpty
-    @Column (length = 50, nullable = false)
+    @Column (length = 50)
     private String nitDisquera;
 
     private boolean estadoDisquera;
