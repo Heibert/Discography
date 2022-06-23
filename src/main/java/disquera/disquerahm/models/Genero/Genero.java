@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 
 import disquera.disquerahm.models.Album.Album;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,11 +25,11 @@ public class Genero{
     @NotEmpty
     @Column(length=50, nullable=false) 
         private String nombreGenero;
-    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "genero", cascade = CascadeType.ALL)
         private List<Album> album;
     private boolean estadoGenero;
     public Genero(){
-        
+        album=new ArrayList<Album>();
     }
     public Genero(Integer idGenero,String nombreGenero,boolean estadoGenero){
         this.idGenero=idGenero;
@@ -52,5 +53,11 @@ public class Genero{
     }
     public void setEstadoGenero(boolean estadoGenero) {
         this.estadoGenero = estadoGenero;
+    }
+    public List<Album> getAlbum() {
+        return album;
+    }
+    public void setAlbum(List<Album> album) {
+        this.album = album;
     }
 }

@@ -1,6 +1,6 @@
 package disquera.disquerahm.models.Artista;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -32,12 +33,11 @@ public class artista {
     @NotEmpty
     @Column
     private String nombreArtistico;
-    @NotEmpty
-    @Column
+    @Temporal(TemporalType.DATE)
     private Date feNacimientoArtista;
     @NotEmpty
     @Column
-    private Email emailArtista;
+    private String emailArtista;
     /* @NotEmpty
     @Column
     Aqui van las relaciones que no sé hacer */

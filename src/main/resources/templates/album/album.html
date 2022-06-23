@@ -38,8 +38,8 @@
           <tr th:if="${album.size > 0}" th:each="a:${album}">
             <td th:text="${a.getIdAlbum}"></td>
             <td th:text="${a.getNombreAlbum}"></td>
-            <td th:text="${a.getAnoAlbum}"></td>
-            <td th:text="{a.ge}"></td>
+            <td th:text="${a.getAnoPublicacionAlbum}"></td>
+            <td th:text="${a.genero.idGenero}"></td>
             <td th:if="${a.getEstadoAlbum==true}" class="green-text">Activo</td>
             <td th:if="${a.getEstadoAlbum==false}" class="red-text">Inactivo</td>
             <td th:if="${a.getEstadoAlbum==true}" class="red btn"><a class="white-text" >Desactivar</a></td>
@@ -49,5 +49,11 @@
           </tr>
           </tbody>
       </table>
+      <!--  -->
+<!--       <table>
+        <tr th:each="genero:${album.genero}">
+          <td th:text="{genero.Id}"></td>
+        </tr>
+      </table> -->
 </body>
 </html>

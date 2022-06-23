@@ -28,8 +28,10 @@
             <div class="red-text" th:if="${#fields.hasErrors('nombreAlbum')}" th:errors="*{nombreAlbum}"></div>
         </div>
         <div class="row">
-            <input class="blue-text col s12" type="datetime-local" th:field="*{anoAlbum}">
-            <div class="red-text" th:if="${#fields.hasErrors('anoAlbum')}" th:errors="*{anoAlbum}"></div>
+            <label>Genero</label>
+            <div class="input-field inline col s12">
+                <input type="text" name="" id="" th:field="*{idGenero}">
+            </div>
         </div>
         <div class="row">
             <label>Estado</label>

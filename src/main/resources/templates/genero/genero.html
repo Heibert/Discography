@@ -45,5 +45,10 @@
           </tr>
           </tbody>
       </table>
+      <table>
+        <tr th:each="album:${genero.album}">
+          <td th:text="{album.Id}"></td>
+        </tr>
+      </table>
 </body>
 </html>
