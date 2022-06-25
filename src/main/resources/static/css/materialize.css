@@ -3344,14 +3344,6 @@ td, th {
   float: right !important;
 }
 
-.no-select, input[type=range],
-input[type=range] + .thumb {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 .circle {
   border-radius: 50%;
 }
@@ -7154,10 +7146,6 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
-  display: none;
-}
-
 select.browser-default {
   display: block;
 }
@@ -7166,7 +7154,7 @@ select {
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 5px;
-  border: 1px solid #f2f2f2;
+  border: 1px solid grey;
   border-radius: 2px;
   height: 3rem;
 }

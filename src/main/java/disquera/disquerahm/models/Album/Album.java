@@ -1,22 +1,31 @@
 package disquera.disquerahm.models.Album;
 
-import disquera.disquerahm.models.Genero.Genero;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import javax.persistence.GeneratedValue;
+import org.springframework.lang.NonNull;
+
+import disquera.disquerahm.models.Artista.Artista;
+import disquera.disquerahm.models.Cancion.Cancion;
+import disquera.disquerahm.models.Genero.Genero;
 
 @Entity
 @Table(name="Album")
@@ -33,14 +42,18 @@ public class Album {
         public void prePersist(){
         anoPublicacionAlbum=new Date();
         }
-        //Album == DetalleFactura
     @ManyToOne(fetch = FetchType.LAZY)
-    /* @JoinColumn(name="idGenero") */
+    @NotNull
         private Genero genero;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "album",  cascade = CascadeType.ALL)
+        private List<Cancion> cancion;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+        private Artista artista;
     private boolean estadoAlbum;
     
     public Album(){
-
+        cancion=new ArrayList<Cancion>();
     }
     public Album(Integer idAlbum,String nombreAlbum,boolean estadoAlbum, Genero genero){
         this.idAlbum=idAlbum;
@@ -77,5 +90,17 @@ public class Album {
     }
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+    public List<Cancion> getCancion() {
+        return cancion;
+    }
+    public void setCancion(List<Cancion> cancion) {
+        this.cancion = cancion;
+    }
+    public Artista getArtista() {
+        return artista;
+    }
+    public void setArtista(Artista artista) {
+        this.artista = artista;
     }
 }

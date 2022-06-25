@@ -30,12 +30,26 @@
         <div class="row">
             <label>Genero</label>
             <div class="input-field inline col s12">
-                <input type="text" name="" id="" th:field="*{idGenero}">
+                <select class="select" id="genero" th:field="*{genero}">
+                    <option value="">Seleccione un genero</option>
+                    <option th:each="g:${genero}" th:value="${g.idGenero}" th:text="${g.nombreGenero}"></option>
+                </select>
+                <div class="red-text" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <label>Artista</label>
+            <div class="input-field inline col s12">
+                <select class="select" th:field="*{artista}">
+                    <option value="">Seleccione un artista</option>
+                    <option th:each="a:${artista}" th:value="${a.idArtista}" th:text="${a.nombreArtista}"></option>
+                </select>
+                <div class="red-text" th:if="${#fields.hasErrors('artista')}" th:errors="*{artista}"></div>
             </div>
         </div>
         <div class="row">
             <label>Estado</label>
-            <div class="input-field inline col s12">
+            <div class="input-field col s12">
                 <input type="checkbox" th:field="*{EstadoAlbum}" checked>
             </div>
         </div>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import disquera.disquerahm.models.Album.IAlbum;
+import disquera.disquerahm.models.Artista.IArtista;
+import disquera.disquerahm.service.IGeneroService;
 import disquera.disquerahm.models.Album.Album;
 
 @Controller
@@ -20,20 +22,25 @@ import disquera.disquerahm.models.Album.Album;
 @SessionAttributes("album")
 public class albumController {
     @Autowired
+    private IGeneroService Igenero;
+    @Autowired
     private IAlbum Ialbum;
+    @Autowired
+    private IArtista Iartista;
     @RequestMapping(value = {"/listar","","/"}, method = RequestMethod.GET)
     public ModelAndView verG(ModelAndView mv){
         mv.addObject("album", Ialbum.findAll());
         mv.setViewName("album/album");
         return mv;
     }
-    
     @RequestMapping(value = {"/editar/{id}","/editar"})
     public ModelAndView editar(@PathVariable Integer id, ModelAndView mv){
         Album album=null;
         if (id>0){
             album=Ialbum.findOne(id);
+            mv.addObject("genero",Igenero.findAll());
             mv.addObject("album", album);
+            mv.addObject("artista", Iartista.findAll());
             mv.setViewName("album/form");
             return mv;
         }else{
@@ -44,18 +51,22 @@ public class albumController {
     @RequestMapping(value= {"/form"},method = RequestMethod.GET)
     public ModelAndView form(ModelAndView mv){
         Album album=new Album();
+        mv.addObject("genero",Igenero.findAll());
         mv.addObject("album", album);
-        mv.setViewName("album/form");
+        mv.addObject("artista", Iartista.findAll());
         return mv;
     }
     @RequestMapping(value = {"/add"},method = RequestMethod.POST)
     public ModelAndView add(@Valid Album album,BindingResult res, ModelAndView mv, SessionStatus status){
         if(res.hasErrors()){
+            mv.addObject("genero",Igenero.findAll());
+            mv.addObject("artista", Iartista.findAll());
             mv.setViewName("album/form");
             return mv;
         }else{
             Ialbum.save(album);
             mv.addObject("album",album);
+            System.out.println(album);
             mv.setViewName("redirect:listar");
             status.setComplete();
             return mv;

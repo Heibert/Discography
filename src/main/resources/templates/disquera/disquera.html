@@ -32,7 +32,8 @@
         <th class="col s1">Direccion</th>
         <th class="col s1">NIT</th>
         <th class="col s1">Estado</th>
-        <th class="col s3">Acciones</th>
+        <th class="col s1">Modificar</th>
+        <th class="col s1">Eliminar</th>
       </thead>
       <tbody>
         <tr th:each="d:${disquera}" th:if="${disquera.size > 0}">
@@ -43,8 +44,6 @@
           <td th:text="${d.getNitDisquera}"></td>
           <td th:if="${d.getEstadoDisquera==true}" class="green-text">Activo</td>
           <td th:if="${d.getEstadoDisquera==false}" class="red-text">Inactivo</td>
-          <td th:if="${d.getEstadoDisquera==true}" class="red btn"><a class="white-text" >Desactivar</a></td>
-          <td th:if="${d.getEstadoDisquera==false}" class="green btn"><a class="white-text">Activar</a></td>
           <td><a class="btn yellow" th:href="@{/disquera/editar/}+${d.getIdDisquera}"><i class="material-icons">build</i></a></td>
           <td><a class="btn red" th:href="@{/disquera/delete/}+${d.IdDisquera}" onclick="/* alertaBorrar(event,'${g.id}','genero') */"> <i class="material-icons">delete_forever</i></a></td>
         </tr>

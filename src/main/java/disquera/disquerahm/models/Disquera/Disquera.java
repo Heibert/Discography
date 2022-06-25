@@ -7,6 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import disquera.disquerahm.models.Artista.Artista;
 
 @Entity
 @Table(name="disqueras")
@@ -26,11 +32,12 @@ public class Disquera {
     @NotEmpty
     @Column (length = 50)
     private String nitDisquera;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "disquera",  cascade = CascadeType.ALL)
+    private List<Artista> artista;
     private boolean estadoDisquera;
 
     public Disquera(){
-        
+        artista=new ArrayList<Artista>();
     }
     public Disquera(Integer idDisquera,String nombreDisquera,boolean estadoDisquera){
         this.idDisquera=idDisquera;
